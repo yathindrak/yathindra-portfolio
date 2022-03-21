@@ -1,9 +1,12 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useContext } from 'react'
+import { IThemeContext, ThemeContext } from '../src/context/themeContext'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+  const { changeTheme, theme } = useContext(ThemeContext) as unknown as IThemeContext;
   return (
     <div className={styles.container}>
       <Head>
@@ -16,6 +19,15 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        <button
+          onClick={() => {
+            console.log(theme);
+            changeTheme(theme === "DARK" ? "LIGHT" : "DARK");
+          }}
+        >
+          Switch Mode
+        </button>
 
         <p className={styles.description}>
           Get started by editing{' '}

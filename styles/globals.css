@@ -14,3 +14,16 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* 
+* Theme css
+*/
+body.dark-mode {
+  color: #fff;
+  background: #363537;
+}
+
+body.light-mode {
+  color: #363537;
+  background: #fafafa;
+} 
