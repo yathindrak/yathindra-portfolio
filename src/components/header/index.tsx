@@ -3,14 +3,14 @@ import Box from "../common/box";
 import Row from "../common/row";
 import { FiMenu } from "react-icons/fi";
 
-export const NavContainer = styled(Row)`
+const NavContainer = styled(Row)`
   justify-content: center;
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
-export const NavBar = styled(Row)`
+const Menu = styled(Row)`
   justify-content: space-between;
   width: 50%;
   margin-top: 1rem;
@@ -19,7 +19,7 @@ export const NavBar = styled(Row)`
   }
 `;
 
-export const MenuItem = styled(Row)`
+const MenuItem = styled(Row)`
   font-size: 1.2rem;
   cursor: pointer;
   text-transform: uppercase;
@@ -32,13 +32,13 @@ export const MenuItem = styled(Row)`
   }
 `;
 
-export const MobileNavTriggerContainer = styled(Row)`
+const MobileNavTriggerContainer = styled(Row)`
   margin-top: 2rem;
   width: 100%;
   justify-content: right;
 `;
 
-export const MobileNavContainer = styled(Row)`
+const MobileNavContainer = styled(Row)`
   width: 95%;
   margin: 0 auto;
   @media screen and (min-width: 768px) {
@@ -52,10 +52,30 @@ const MobileNavTriggerItem = styled(Box)`
   cursor: pointer;
 `;
 
-export const MobileNavTrigger: React.FC = () => {
+const MobileNavTrigger: React.FC = () => {
   return (
     <MobileNavTriggerItem>
       <FiMenu size={28} />
     </MobileNavTriggerItem>
+  );
+};
+
+export const NavBar: React.FC = () => {
+  return (
+    <>
+      <NavContainer>
+        <Menu>
+          <MenuItem>Who am I</MenuItem>
+          <MenuItem>See My Work</MenuItem>
+          <MenuItem>Let&rsquo;s talk</MenuItem>
+        </Menu>
+      </NavContainer>
+
+      <MobileNavContainer>
+        <MobileNavTriggerContainer>
+          <MobileNavTrigger>ABC</MobileNavTrigger>
+        </MobileNavTriggerContainer>
+      </MobileNavContainer>
+    </>
   );
 };
