@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Box from "../common/box";
 import Row from "../common/row";
 import { FiMenu } from "react-icons/fi";
-
+import { GrClose } from "react-icons/gr";
+import { useState } from "react";
 const NavContainer = styled(Row)`
   justify-content: center;
   @media screen and (max-width: 768px) {
@@ -38,7 +39,9 @@ const MobileNavTriggerContainer = styled(Row)`
   justify-content: right;
 `;
 
-const MobileNavContainer = styled(Row)`
+const MobileNavContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
   width: 95%;
   margin: 0 auto;
   @media screen and (min-width: 768px) {
@@ -52,15 +55,45 @@ const MobileNavTriggerItem = styled(Box)`
   cursor: pointer;
 `;
 
-const MobileNavTrigger: React.FC = () => {
+const MobileNavDropdownContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+`;
+
+const MobileNavDropdownItem = styled(Row)`
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  font-size: 1.4rem;
+  margin: 1rem 0 1.4rem 1.4rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-weight: 500;
+  &:hover {
+    color: #0070f3;
+    transition: all 0.3s;
+  }
+`;
+
+interface NavBarProps {
+  isMobileNavOpen: boolean;
+  setIsMobileNavOpen: (isMobileNavOpen: boolean) => void;
+}
+
+const MobileNavTrigger: React.FC<NavBarProps> = ({
+  isMobileNavOpen,
+  setIsMobileNavOpen,
+}) => {
   return (
-    <MobileNavTriggerItem>
-      <FiMenu size={28} />
+    <MobileNavTriggerItem onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}>
+      {isMobileNavOpen ? <GrClose size={28} /> : <FiMenu size={28} />}
     </MobileNavTriggerItem>
   );
 };
 
 export const NavBar: React.FC = () => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   return (
     <>
       <NavContainer>
@@ -73,8 +106,18 @@ export const NavBar: React.FC = () => {
 
       <MobileNavContainer>
         <MobileNavTriggerContainer>
-          <MobileNavTrigger>ABC</MobileNavTrigger>
+          <MobileNavTrigger
+            isMobileNavOpen={isMobileNavOpen}
+            setIsMobileNavOpen={setIsMobileNavOpen}
+          />
         </MobileNavTriggerContainer>
+        {isMobileNavOpen && (
+          <MobileNavDropdownContainer>
+            <MobileNavDropdownItem>Who am I</MobileNavDropdownItem>
+            <MobileNavDropdownItem>See My Work</MobileNavDropdownItem>
+            <MobileNavDropdownItem>Let&rsquo;s talk</MobileNavDropdownItem>
+          </MobileNavDropdownContainer>
+        )}
       </MobileNavContainer>
     </>
   );

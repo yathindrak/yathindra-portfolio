@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   ) as unknown as IThemeContext;
   return (
     <>
-      <NavBar />
+      <div>jhhkh</div>
     </>
   );
 };
