@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useContext } from "react";
-import { NavBar } from "../src/components/header";
+import Row from "../src/components/common/row";
+import { HeroSection } from "../src/components/hero";
 import { IThemeContext, ThemeContext } from "../src/context/themeContext";
 
 const Home: NextPage = () => {
@@ -9,7 +10,11 @@ const Home: NextPage = () => {
   ) as unknown as IThemeContext;
   return (
     <>
-      <div>jhhkh</div>
+      <HeroSection
+        mainTitleText="Yathindra"
+        mainTitleSubText="Kodithuwakku"
+        subtitleText="Brings ideas to life with code"
+      />
     </>
   );
 };

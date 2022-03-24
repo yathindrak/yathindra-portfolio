@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import Box from "../box";
 
-const Row = styled.div`
-    display: flex;
-    flex-direction: row;
-  `;
+const Row = styled(Box)`
+  display: flex;
+  flex-direction: row;
+`;
 
 export default Row;

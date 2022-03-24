@@ -4,8 +4,12 @@ import Row from "../common/row";
 import { FiMenu } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { useState } from "react";
+
 const NavContainer = styled(Row)`
   justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -26,7 +30,7 @@ const MenuItem = styled(Row)`
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   padding: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   &:hover {
     color: #0070f3;
     transition: all 0.3s;
