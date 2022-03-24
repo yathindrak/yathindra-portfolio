@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { useContext } from "react";
-import Row from "../src/components/common/row";
 import { HeroSection } from "../src/components/hero";
 import { IThemeContext, ThemeContext } from "../src/context/themeContext";
 
