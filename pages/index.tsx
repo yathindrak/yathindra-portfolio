@@ -12,6 +12,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Yathindra</title>
+        <meta name="description" content="Brings ideas to life with code" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <HeroSection

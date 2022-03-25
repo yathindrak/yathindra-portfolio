@@ -3,13 +3,18 @@ import Box from "../common/box";
 import Row from "../common/row";
 import { FiMenu } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const NavContainer = styled(Row)`
+interface NavContainerProps {
+  readonly isScrolledDown: boolean;
+}
+
+const NavContainer = styled(Row)<NavContainerProps>`
   justify-content: center;
   position: fixed;
   width: 100%;
   z-index: 999;
+  background: ${(props) => (props.isScrolledDown ? "white" : "transparent")};
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -98,9 +103,19 @@ const MobileNavTrigger: React.FC<NavBarProps> = ({
 
 export const NavBar: React.FC = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", () =>
+        setIsScrolledDown(window.pageYOffset > 200)
+      );
+    }
+  }, []);
+
   return (
     <>
-      <NavContainer>
+      <NavContainer isScrolledDown={isScrolledDown}>
         <Menu>
           <MenuItem>Who am I</MenuItem>
           <MenuItem>See My Work</MenuItem>
