@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import { useContext } from "react";
 import { HeroSection } from "../src/components/hero";
 import { IThemeContext, ThemeContext } from "../src/context/themeContext";
@@ -9,6 +10,10 @@ const Home: NextPage = () => {
   ) as unknown as IThemeContext;
   return (
     <>
+      <Head>
+        <title>Yathindra</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <HeroSection
         mainTitleText="Yathindra"
         mainTitleSubText="Kodithuwakku"
