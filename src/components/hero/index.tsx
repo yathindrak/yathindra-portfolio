@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Box from "../common/box";
+import Container from "../common/container";
 import Row from "../common/row";
 
 const HeroImageSection = styled(Row)`
@@ -84,7 +85,7 @@ export const HeroSection: React.FC<NavBarProps> = ({
   subtitleText,
 }) => {
   return (
-    <Row style={{ width: "90%", margin: "auto" }}>
+    <Container>
       <HeroDescriptionSection>
         <HeroDescriptionTitleContainer>
           <HeroDescriptionTitleText>{mainTitleText}</HeroDescriptionTitleText>
@@ -99,6 +100,6 @@ export const HeroSection: React.FC<NavBarProps> = ({
       <HeroImageContainer>
         <HeroImageSection />
       </HeroImageContainer>
-    </Row>
+    </Container>
   );
 };
