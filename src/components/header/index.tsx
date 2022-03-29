@@ -108,7 +108,7 @@ export const NavBar: React.FC = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () =>
-        setIsScrolledDown(window.pageYOffset > 200)
+        setIsScrolledDown(window.pageYOffset > 100)
       );
     }
   }, []);

@@ -1,7 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useContext } from "react";
+import Box from "../src/components/common/box";
+import Row from "../src/components/common/row";
 import { HeroSection } from "../src/components/hero";
+import { Portfolio } from "../src/components/portfolio";
 import { IThemeContext, ThemeContext } from "../src/context/themeContext";
 
 const Home: NextPage = () => {
@@ -21,60 +24,7 @@ const Home: NextPage = () => {
         subtitleText="Brings ideas to life with code"
       />
 
-      <div>
-        <nav>
-          <div>
-            <span data-name="all">All</span>
-            <span>Bag</span>
-            <span>Shoe</span>
-            <span>Watch</span>
-            <span>Camera</span>
-            <span>Headphone</span>
-          </div>
-        </nav>
-        <div className="gallery">
-          <div data-name="bag">
-            <span>
-              <img src="images/bag-1.jpg" alt="" />
-            </span>
-          </div>
-          <div data-name="headphone">
-            <span>
-              <img src="images/headphone-1.jpg" alt="" />
-            </span>
-          </div>
-          <div data-name="camera">
-            <span>
-              <img src="images/camera-1.jpg" alt="" />
-            </span>
-          </div>
-          <div data-name="shoe">
-            <span>
-              <img src="images/shoe-1.jpg" alt="" />
-            </span>
-          </div>
-          <div data-name="headphone">
-            <span>
-              <img src="images/headphone-2.jpg" alt="" />
-            </span>
-          </div>
-          <div data-name="watch">
-            <span>
-              <img src="images/watch-1.jpg" alt="" />
-            </span>
-          </div>
-          <div data-name="shoe">
-            <span>
-              <img src="images/shoe-2.jpg" alt="" />
-            </span>
-          </div>
-          <div data-name="camera">
-            <span>
-              <img src="images/camera-2.jpg" alt="" />
-            </span>
-          </div>
-        </div>
-      </div>
+      <Portfolio />
     </>
   );
 };
