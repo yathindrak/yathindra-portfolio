@@ -1,3 +1,4 @@
+import { GrClose } from "react-icons/gr";
 import styled from "styled-components";
 import Box from "../common/box";
 import Container from "../common/container";
@@ -5,7 +6,7 @@ import Row from "../common/row";
 
 const HeroImageSection = styled(Row)`
   background-image: url("profile-photo.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   // clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
   width: 22rem;
@@ -96,6 +97,9 @@ export const HeroSection: React.FC<NavBarProps> = ({
         <HeroDescriptionSubTitleContainer>
           {subtitleText}
         </HeroDescriptionSubTitleContainer>
+        <div>
+          <GrClose size={10} />
+        </div>
       </HeroDescriptionSection>
       <HeroImageContainer>
         <HeroImageSection />
