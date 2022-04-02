@@ -44,7 +44,8 @@ interface PortfolioCardsContainerProps {
 }
 
 const PortfolioCardsContainer = styled(Row)<PortfolioCardsContainerProps>`
-  justify-content: ${(props) => (props.shouldSpaceEvenly ? "space-evenly" : "space-between")};
+  justify-content: ${(props) =>
+    props.shouldSpaceEvenly ? "space-evenly" : "space-between"};
   flex-wrap: wrap;
 `;
 
@@ -70,15 +71,15 @@ const PortfolioCardContainer = styled(Row)`
   &:hover ${PortfolioCardOverlayContainer} {
     opacity: 1;
     color: #fff;
-  };
+  }
   @media screen and (max-width: 992px) {
     width: calc(50% - 1rem);
     margin-bottom: 0;
-  };
+  }
   @media screen and (max-width: 576px) {
     width: 100%;
     margin-bottom: 0;
-  };
+  } ;
 `;
 
 const PortfolioOverlayHeading = styled(Row)`
@@ -103,26 +104,24 @@ export const Portfolio: React.FC = ({}) => {
       <PortfolioMobileTitle>My Portfolio</PortfolioMobileTitle>
 
       <PortfolioCardsContainer shouldSpaceEvenly={true}>
-        {
-          [1,2].map((item, i)=> (
-            <PortfolioCardContainer key={i}>
-              <Image
-                  src={adapttextImage}
-                  layout="fill"
-                  width={200}
-                  objectFit="contain"
-                  placeholder="blur"
-                  alt="Picture of the author"
-                />
-                <PortfolioCardOverlayContainer>
-                  <PortfolioOverlayHeading>Title</PortfolioOverlayHeading>
-                  <PortfolioOverlayDescription>
-                    Description
-                  </PortfolioOverlayDescription>
-                </PortfolioCardOverlayContainer>
-            </PortfolioCardContainer>
-          ))
-        }
+        {[1, 2].map((item, i) => (
+          <PortfolioCardContainer key={i}>
+            <Image
+              src={adapttextImage}
+              layout="fill"
+              width={200}
+              objectFit="contain"
+              placeholder="blur"
+              alt="Picture of the author"
+            />
+            <PortfolioCardOverlayContainer>
+              <PortfolioOverlayHeading>Title</PortfolioOverlayHeading>
+              <PortfolioOverlayDescription>
+                Description
+              </PortfolioOverlayDescription>
+            </PortfolioCardOverlayContainer>
+          </PortfolioCardContainer>
+        ))}
       </PortfolioCardsContainer>
     </PortfolioContainer>
   );

@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useContext } from "react";
 import Box from "../src/components/common/box";
 import Row from "../src/components/common/row";
+import { ContactSection } from "../src/components/contact";
 import { HeroSection } from "../src/components/hero";
 import { Portfolio } from "../src/components/portfolio";
 import { IThemeContext, ThemeContext } from "../src/context/themeContext";
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
       />
 
       <Portfolio />
+      <ContactSection />
     </>
   );
 };
