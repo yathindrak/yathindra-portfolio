@@ -23,6 +23,10 @@ const PortfolioMenuItem = styled(Box)`
   margin-left: 4rem;
   font-size: 1.2rem;
   cursor: pointer;
+  &:hover {
+    color: #0070f3;
+    transition: all 0.3s;
+  }
 `;
 
 const PortfolioMobileTitle = styled(Box)`
