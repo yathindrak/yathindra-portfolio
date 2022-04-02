@@ -5,14 +5,13 @@ import Row from "../common/row";
 
 const HeroImageSection = styled(Row)`
   background-image: url("profile-photo.png");
-  background-position: center;
-  background-size: initial;
+  background-size: contain;
   background-repeat: no-repeat;
   // clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
   width: 22rem;
   height: 22rem;
   position: absolute;
-  top: 28%;
+  top: 26%;
   right: 20%;
   border-radius: 1rem;
   box-shadow: 0 10px 40px rgb(0 0 0 / 25%);
