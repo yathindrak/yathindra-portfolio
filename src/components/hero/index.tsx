@@ -56,10 +56,11 @@ const HeroDescriptionSection = styled(Box)`
 
 const HeroDescriptionTitleText = styled.span`
   text-transform: uppercase;
+  color: purple;
 `;
 
 const HeroDescriptionTitleSubText = styled.span`
-  color: transparent;
+  color: #000;
   -webkit-text-stroke: 1px #000;
   display: block;
 `;
