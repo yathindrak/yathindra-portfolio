@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Box from "../common/box";
 import Container from "../common/container";
 import Row from "../common/row";
-import adapttextImage from "../../../public/adaptext.png";
 import useContentful, { IPortofolioData } from "../../hooks/useContentful";
 import { useEffect, useState } from "react";
 import { PROJECT_TYPES } from "../../constants/projectTypes";
@@ -23,10 +22,15 @@ const PortfolioMenuContainer = styled(Row)`
   }
 `;
 
-const PortfolioMenuItem = styled(Box)`
+interface PortfolioMenuItemProps {
+  readonly selected: boolean;
+}
+
+const PortfolioMenuItem = styled(Box)<PortfolioMenuItemProps>`
   margin-left: 4rem;
   font-size: 1.2rem;
   cursor: pointer;
+  color: ${(props) => (props.selected ? "purple" : "#000")};
   &:hover {
     color: purple;
     transition: all 0.3s;
@@ -101,6 +105,10 @@ const PortfolioOverlayDescription = styled(Row)`
 export const Portfolio: React.FC = ({}) => {
   const { data, error, fetched, loading } = useContentful();
   const [filteredData, setFilteredData] = useState<IPortofolioData[]>();
+  const [switchAllTab, setSwitchAllTab] = useState(false);
+  const [switchDesignTab, setSwitchDesignTab] = useState(false);
+  const [switchConceptTab, setSwitchConceptTab] = useState(false);
+  const [switchDevelopmentTab, setSwitchDevelopmentTab] = useState(false);
   const [selectedTab, setSelectedTab] = useState<PROJECT_TYPES>(
     PROJECT_TYPES.ALL
   );
@@ -128,19 +136,51 @@ export const Portfolio: React.FC = ({}) => {
   return (
     <PortfolioContainer id="portfolio">
       <PortfolioMenuContainer>
-        <PortfolioMenuItem onClick={() => setSelectedTab(PROJECT_TYPES.ALL)}>
+        <PortfolioMenuItem
+          onClick={() => {
+            setSelectedTab(PROJECT_TYPES.ALL);
+            setSwitchAllTab(true);
+            setSwitchDesignTab(false);
+            setSwitchConceptTab(false);
+            setSwitchDevelopmentTab(false);
+          }}
+          selected={switchAllTab}
+        >
           All
         </PortfolioMenuItem>
-        <PortfolioMenuItem onClick={() => setSelectedTab(PROJECT_TYPES.DESIGN)}>
+        <PortfolioMenuItem
+          onClick={() => {
+            setSelectedTab(PROJECT_TYPES.DESIGN);
+            setSwitchAllTab(false);
+            setSwitchDesignTab(true);
+            setSwitchConceptTab(false);
+            setSwitchDevelopmentTab(false);
+          }}
+          selected={switchDesignTab}
+        >
           Design
         </PortfolioMenuItem>
         <PortfolioMenuItem
-          onClick={() => setSelectedTab(PROJECT_TYPES.CONCEPT)}
+          onClick={() => {
+            setSelectedTab(PROJECT_TYPES.CONCEPT);
+            setSwitchAllTab(false);
+            setSwitchDesignTab(false);
+            setSwitchConceptTab(true);
+            setSwitchDevelopmentTab(false);
+          }}
+          selected={switchConceptTab}
         >
           Concept
         </PortfolioMenuItem>
         <PortfolioMenuItem
-          onClick={() => setSelectedTab(PROJECT_TYPES.DEVELOPMENT)}
+          onClick={() => {
+            setSelectedTab(PROJECT_TYPES.DEVELOPMENT);
+            setSwitchAllTab(false);
+            setSwitchDesignTab(false);
+            setSwitchConceptTab(false);
+            setSwitchDevelopmentTab(true);
+          }}
+          selected={switchDevelopmentTab}
         >
           Development
         </PortfolioMenuItem>
