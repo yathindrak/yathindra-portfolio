@@ -37,7 +37,7 @@ const MenuItem = styled(Row)`
   padding: 1rem;
   font-weight: 400;
   &:hover {
-    color: #0070f3;
+    color: purple;
     transition: all 0.3s;
   }
 `;
@@ -80,7 +80,7 @@ const MobileNavDropdownItem = styled(Row)`
   letter-spacing: 0.2rem;
   font-weight: 500;
   &:hover {
-    color: #0070f3;
+    color: purple;
     transition: all 0.3s;
   }
 `;

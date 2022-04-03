@@ -1,4 +1,5 @@
-import { GrClose } from "react-icons/gr";
+import Link from "next/link";
+import { GrClose, GrGithub, GrLinkedin, GrMedium } from "react-icons/gr";
 import styled from "styled-components";
 import Box from "../common/box";
 import Container from "../common/container";
@@ -23,7 +24,6 @@ const HeroImageSection = styled(Row)`
 
 const HeroDescriptionTitleContainer = styled(Box)`
   margin-top: 36vh;
-  margin-left: 4rem;
   font-size: 4rem;
   @media screen and (max-width: 768px) {
     font-size: 3rem;
@@ -33,7 +33,6 @@ const HeroDescriptionTitleContainer = styled(Box)`
 `;
 
 const HeroDescriptionSubTitleContainer = styled(Box)`
-  margin-left: 4rem;
   margin-top: 3rem;
   font-size: 1.5rem;
   color: #666464;
@@ -47,10 +46,12 @@ const HeroDescriptionSection = styled(Box)`
   height: 100vh;
   width: 50%;
   font-weight: 600;
+  margin-left: 4rem;
   @media screen and (max-width: 768px) {
     width: 100%;
     text-align: center;
     height: 50vh;
+    margin-left: 0;
   }
 `;
 
@@ -74,6 +75,16 @@ const HeroImageContainer = styled(Box)`
   }
 `;
 
+const SMIconsContainer = styled(Row)`
+  margin-top: 3rem;
+  width: 6rem;
+  justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    text-align: center;
+    width: 40%;
+    margin: 3rem auto;
+  }
+`;
 interface NavBarProps {
   mainTitleText: string;
   mainTitleSubText: string;
@@ -97,9 +108,29 @@ export const HeroSection: React.FC<NavBarProps> = ({
         <HeroDescriptionSubTitleContainer>
           {subtitleText}
         </HeroDescriptionSubTitleContainer>
-        <div>
-          <GrClose size={10} />
-        </div>
+        <SMIconsContainer>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/yathindra-kodithuwakku/"
+            rel="noopener noreferrer"
+          >
+            <GrLinkedin size={23} />
+          </a>
+          <a
+            target="_blank"
+            href="https://github.com/yathindrakodithuwakku"
+            rel="noopener noreferrer"
+          >
+            <GrGithub size={23} />
+          </a>
+          <a
+            target="_blank"
+            href="https://yathindra.medium.com/"
+            rel="noopener noreferrer"
+          >
+            <GrMedium size={23} />
+          </a>
+        </SMIconsContainer>
       </HeroDescriptionSection>
       <HeroImageContainer>
         <HeroImageSection />

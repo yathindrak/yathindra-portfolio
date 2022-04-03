@@ -31,8 +31,9 @@ const PortfolioMenuItem = styled(Box)`
 
 const PortfolioMobileTitle = styled(Box)`
   align-self: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
+  margin-top: 2rem;
   @media screen and (min-width: 768px) {
     display: none;
   }

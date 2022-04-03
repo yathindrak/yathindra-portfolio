@@ -1,5 +1,4 @@
 import React, { MouseEvent, useState } from "react";
-import { GrClose } from "react-icons/gr";
 import styled from "styled-components";
 import Box from "../common/box";
 import { PrimaryButton, PrimaryButtonNotAllowed } from "../common/button";
@@ -19,8 +18,7 @@ const ContactSubTitleText = styled(Box)`
   font-size: 1.5rem;
   color: #666464;
   @media screen and (max-width: 768px) {
-    margin-left: 0rem;
-    margin-top: 2rem;
+    margin: 2rem auto;
     text-align: center;
   }
 `;
@@ -50,8 +48,10 @@ const FormContainer = styled(Box)`
   }
 `;
 
-export const NameEmailContainer = styled(Box)`
-  display: flex;
+export const NameEmailContainer = styled(Row)`
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ContactSection: React.FC = () => {
@@ -87,7 +87,7 @@ export const ContactSection: React.FC = () => {
       </ContactSubTitleText>
 
       <FormContainer>
-        <Row>
+        <NameEmailContainer>
           <FormGroupSm style={{ marginRight: "5rem" }}>
             <Label>Name</Label>
             <Input
@@ -119,7 +119,7 @@ export const ContactSection: React.FC = () => {
                 : null}
             </ErrorMessage>
           </FormGroupSm>
-        </Row>
+        </NameEmailContainer>
         <Box style={{ marginTop: "1rem" }}>
           <Label>Message</Label>
           <TextArea

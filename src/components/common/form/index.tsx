@@ -5,6 +5,10 @@ export const FormGroupSm = styled(Box)`
   display: flex;
   flex-direction: column;
   width: 50%;
+  @media screen and (max-width: 768px) {
+    margin: 0 !important;
+    width: 100%;
+  }
 `;
 
 export const Label = styled.label`
