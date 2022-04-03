@@ -4,6 +4,7 @@ import Row from "../common/row";
 import { FiMenu } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface NavContainerProps {
   readonly isScrolledDown: boolean;
@@ -117,9 +118,15 @@ export const NavBar: React.FC = () => {
     <>
       <NavContainer isScrolledDown={isScrolledDown}>
         <Menu>
-          <MenuItem>Who am I</MenuItem>
-          <MenuItem>See My Work</MenuItem>
-          <MenuItem>Let&rsquo;s talk</MenuItem>
+          <Link href="#" passHref>
+            <MenuItem>Who am I</MenuItem>
+          </Link>
+          <Link href="#portfolio" passHref>
+            <MenuItem>See My Work</MenuItem>
+          </Link>
+          <Link href="#contact" passHref>
+            <MenuItem>Let&rsquo;s talk</MenuItem>
+          </Link>
         </Menu>
       </NavContainer>
 

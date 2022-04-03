@@ -80,7 +80,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <Container style={{ flexDirection: "column" }}>
+    <Container id="contact" style={{ flexDirection: "column" }}>
       <ContactTitleText>Let&rsquo;s talk</ContactTitleText>
       <ContactSubTitleText>
         Good conversations leads to innovations

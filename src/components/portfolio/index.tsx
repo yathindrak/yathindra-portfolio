@@ -95,7 +95,7 @@ const PortfolioOverlayDescription = styled(Row)`
 
 export const Portfolio: React.FC = ({}) => {
   return (
-    <PortfolioContainer>
+    <PortfolioContainer id="portfolio">
       <PortfolioMenuContainer>
         <PortfolioMenuItem>All</PortfolioMenuItem>
         <PortfolioMenuItem>Design</PortfolioMenuItem>
