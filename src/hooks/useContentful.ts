@@ -4,8 +4,9 @@ import { ContentfulContext } from "../context/contentfulContext";
 export interface IPortofolioData {
   title: string;
   description: string;
-  image: string;
+  image: any;
   tag: string[];
+  url: string;
 }
 
 const useContentful = () => {

@@ -7,6 +7,7 @@ import adapttextImage from "../../../public/adaptext.png";
 import useContentful, { IPortofolioData } from "../../hooks/useContentful";
 import { useEffect, useState } from "react";
 import { PROJECT_TYPES } from "../../constants/projectTypes";
+import Link from "next/link";
 
 const PortfolioContainer = styled(Container)`
   display: flex;
@@ -149,24 +150,26 @@ export const Portfolio: React.FC = ({}) => {
       <PortfolioCardsContainer shouldSpaceEvenly={true}>
         {filteredData
           ? filteredData.map((item, i) => (
-              <PortfolioCardContainer key={i}>
-                <Image
-                  src={adapttextImage}
-                  layout="fill"
-                  width={200}
-                  objectFit="contain"
-                  placeholder="blur"
-                  alt="Picture of the author"
-                />
-                <PortfolioCardOverlayContainer>
-                  <PortfolioOverlayHeading>
-                    {item?.title}
-                  </PortfolioOverlayHeading>
-                  <PortfolioOverlayDescription>
-                    {item?.description}
-                  </PortfolioOverlayDescription>
-                </PortfolioCardOverlayContainer>
-              </PortfolioCardContainer>
+              <Link href={item?.url} passHref key={i}>
+                <PortfolioCardContainer>
+                  <Image
+                    src={`https:${item?.image?.fields?.file?.url}`}
+                    layout="fill"
+                    width={200}
+                    objectFit="contain"
+                    // placeholder="blur"
+                    alt="Picture of the author"
+                  />
+                  <PortfolioCardOverlayContainer>
+                    <PortfolioOverlayHeading>
+                      {item?.title}
+                    </PortfolioOverlayHeading>
+                    <PortfolioOverlayDescription>
+                      {item?.description}
+                    </PortfolioOverlayDescription>
+                  </PortfolioCardOverlayContainer>
+                </PortfolioCardContainer>
+              </Link>
             ))
           : null}
       </PortfolioCardsContainer>
