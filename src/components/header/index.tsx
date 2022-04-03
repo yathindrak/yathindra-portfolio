@@ -139,9 +139,15 @@ export const NavBar: React.FC = () => {
         </MobileNavTriggerContainer>
         {isMobileNavOpen && (
           <MobileNavDropdownContainer>
-            <MobileNavDropdownItem>Who am I</MobileNavDropdownItem>
-            <MobileNavDropdownItem>See My Work</MobileNavDropdownItem>
-            <MobileNavDropdownItem>Let&rsquo;s talk</MobileNavDropdownItem>
+            <Link href="#" passHref>
+              <MobileNavDropdownItem>Who am I</MobileNavDropdownItem>
+            </Link>
+            <Link href="#portfolio" passHref>
+              <MobileNavDropdownItem>See My Work</MobileNavDropdownItem>
+            </Link>
+            <Link href="#contact" passHref>
+              <MobileNavDropdownItem>Let&rsquo;s talk</MobileNavDropdownItem>
+            </Link>
           </MobileNavDropdownContainer>
         )}
       </MobileNavContainer>
