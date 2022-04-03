@@ -4,6 +4,9 @@ import Box from "../common/box";
 import Container from "../common/container";
 import Row from "../common/row";
 import adapttextImage from "../../../public/adaptext.png";
+import useContentful, { IPortofolioData } from "../../hooks/useContentful";
+import { useEffect, useState } from "react";
+import { PROJECT_TYPES } from "../../constants/projectTypes";
 
 const PortfolioContainer = styled(Container)`
   display: flex;
@@ -24,7 +27,7 @@ const PortfolioMenuItem = styled(Box)`
   font-size: 1.2rem;
   cursor: pointer;
   &:hover {
-    color: #0070f3;
+    color: purple;
     transition: all 0.3s;
   }
 `;
@@ -91,38 +94,81 @@ const PortfolioOverlayDescription = styled(Row)`
   font-size: 1.3rem;
   margin-top: 1rem;
   color: #c1bbbb;
+  text-align: center;
 `;
 
 export const Portfolio: React.FC = ({}) => {
+  const { data, error, fetched, loading } = useContentful();
+  const [filteredData, setFilteredData] = useState<IPortofolioData[]>();
+  const [selectedTab, setSelectedTab] = useState<PROJECT_TYPES>(
+    PROJECT_TYPES.ALL
+  );
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
+  useEffect(() => {
+    if (!data) return;
+
+    if (selectedTab === PROJECT_TYPES.ALL) {
+      setFilteredData(data);
+    } else {
+      const selectedData = data.filter((item, i) => {
+        if (item?.tag?.includes(selectedTab)) {
+          return item;
+        }
+      });
+
+      setFilteredData(selectedData);
+    }
+  }, [selectedTab]);
+
   return (
     <PortfolioContainer id="portfolio">
       <PortfolioMenuContainer>
-        <PortfolioMenuItem>All</PortfolioMenuItem>
-        <PortfolioMenuItem>Design</PortfolioMenuItem>
-        <PortfolioMenuItem>Concept</PortfolioMenuItem>
-        <PortfolioMenuItem>Development</PortfolioMenuItem>
+        <PortfolioMenuItem onClick={() => setSelectedTab(PROJECT_TYPES.ALL)}>
+          All
+        </PortfolioMenuItem>
+        <PortfolioMenuItem onClick={() => setSelectedTab(PROJECT_TYPES.DESIGN)}>
+          Design
+        </PortfolioMenuItem>
+        <PortfolioMenuItem
+          onClick={() => setSelectedTab(PROJECT_TYPES.CONCEPT)}
+        >
+          Concept
+        </PortfolioMenuItem>
+        <PortfolioMenuItem
+          onClick={() => setSelectedTab(PROJECT_TYPES.DEVELOPMENT)}
+        >
+          Development
+        </PortfolioMenuItem>
       </PortfolioMenuContainer>
       <PortfolioMobileTitle>My Portfolio</PortfolioMobileTitle>
 
       <PortfolioCardsContainer shouldSpaceEvenly={true}>
-        {[1, 2].map((item, i) => (
-          <PortfolioCardContainer key={i}>
-            <Image
-              src={adapttextImage}
-              layout="fill"
-              width={200}
-              objectFit="contain"
-              placeholder="blur"
-              alt="Picture of the author"
-            />
-            <PortfolioCardOverlayContainer>
-              <PortfolioOverlayHeading>Title</PortfolioOverlayHeading>
-              <PortfolioOverlayDescription>
-                Description
-              </PortfolioOverlayDescription>
-            </PortfolioCardOverlayContainer>
-          </PortfolioCardContainer>
-        ))}
+        {filteredData
+          ? filteredData.map((item, i) => (
+              <PortfolioCardContainer key={i}>
+                <Image
+                  src={adapttextImage}
+                  layout="fill"
+                  width={200}
+                  objectFit="contain"
+                  placeholder="blur"
+                  alt="Picture of the author"
+                />
+                <PortfolioCardOverlayContainer>
+                  <PortfolioOverlayHeading>
+                    {item?.title}
+                  </PortfolioOverlayHeading>
+                  <PortfolioOverlayDescription>
+                    {item?.description}
+                  </PortfolioOverlayDescription>
+                </PortfolioCardOverlayContainer>
+              </PortfolioCardContainer>
+            ))
+          : null}
       </PortfolioCardsContainer>
     </PortfolioContainer>
   );
