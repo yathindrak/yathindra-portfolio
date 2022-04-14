@@ -15,6 +15,7 @@ const NavContainer = styled(Row)<NavContainerProps>`
   position: fixed;
   width: 100%;
   z-index: 999;
+  top: 0;
   background: ${(props) => (props.isScrolledDown ? "white" : "transparent")};
   @media screen and (max-width: 768px) {
     display: none;
@@ -118,13 +119,16 @@ export const NavBar: React.FC = () => {
     <>
       <NavContainer isScrolledDown={isScrolledDown}>
         <Menu>
-          <Link href="#" passHref>
+          <Link href="/#" passHref>
             <MenuItem>Who am I</MenuItem>
           </Link>
-          <Link href="#portfolio" passHref>
+          <Link href="/#portfolio" passHref>
             <MenuItem>See My Work</MenuItem>
           </Link>
-          <Link href="#contact" passHref>
+          <Link href="/blog" passHref>
+            <MenuItem>Blog</MenuItem>
+          </Link>
+          <Link href="/#contact" passHref>
             <MenuItem>Let&rsquo;s talk</MenuItem>
           </Link>
         </Menu>
@@ -139,13 +143,16 @@ export const NavBar: React.FC = () => {
         </MobileNavTriggerContainer>
         {isMobileNavOpen && (
           <MobileNavDropdownContainer>
-            <Link href="#" passHref>
+            <Link href="/#" passHref>
               <MobileNavDropdownItem>Who am I</MobileNavDropdownItem>
             </Link>
-            <Link href="#portfolio" passHref>
+            <Link href="/#portfolio" passHref>
               <MobileNavDropdownItem>See My Work</MobileNavDropdownItem>
             </Link>
-            <Link href="#contact" passHref>
+            <Link href="/blog" passHref>
+              <MobileNavDropdownItem>Blog</MobileNavDropdownItem>
+            </Link>
+            <Link href="/#contact" passHref>
               <MobileNavDropdownItem>Let&rsquo;s talk</MobileNavDropdownItem>
             </Link>
           </MobileNavDropdownContainer>

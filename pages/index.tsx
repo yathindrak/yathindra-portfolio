@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { useContext } from "react";
 import { ContactSection } from "../src/components/contact";
@@ -14,11 +15,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Yathindra</title>
-        <meta name="description" content="Brings ideas to life with code" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <NextSeo title="Yathindra" description="Brings ideas to life with code" />
       <HeroSection
         mainTitleText="Yathindra"
         mainTitleSubText="Kodithuwakku"
