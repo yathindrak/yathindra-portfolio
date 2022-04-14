@@ -3,13 +3,12 @@ import styled from "styled-components";
 import Box from "../common/box";
 import Container from "../common/container";
 import Row from "../common/row";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import c from "./index.module.css";
 
 const ArticlesContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  margin-top: 10rem;
+  max-width: 68vw;
 `;
 
 const ArticlesMobileTitle = styled(Box)`
@@ -80,17 +79,11 @@ const ArticleDescription = styled(Row)`
   line-height: 1.8rem;
 `;
 
-interface IArticlesProps {
-  articles: any;
+interface IArticleProps {
+  article: any;
 }
 
-export const Articles: React.FC<IArticlesProps> = ({ articles }) => {
-  const [filteredData, setFilteredData] = useState<any[]>();
-
-  useEffect(() => {
-    setFilteredData(articles);
-  }, [articles]);
-
+export const Article: React.FC<IArticleProps> = ({ article }) => {
   const convertNodeToText = (node: any) => {
     let tag = document.createElement("div");
     tag.innerHTML = node;
@@ -98,34 +91,16 @@ export const Articles: React.FC<IArticlesProps> = ({ articles }) => {
     return node;
   };
 
+  console.log(article);
+
   return (
     <ArticlesContainer>
       <ArticlesMobileTitle>My Articles</ArticlesMobileTitle>
 
-      <ArticleCardsContainer shouldSpaceEvenly={true}>
-        {filteredData
-          ? filteredData.map((item, i) => (
-              <Link href={item?.guid?.split("/p/")[1]} passHref key={i}>
-                <ArticleCard key={i}>
-                  <ArticleCardContainer>
-                    <img
-                      style={{ width: "100%" }}
-                      src={item?.thumbnail}
-                      alt={item?.title}
-                    />
-                    <ArticleHeading>{item?.title}</ArticleHeading>
-                    <ArticleDescription>
-                      {`${convertNodeToText(
-                        item.description.substring(0, 280)
-                      )} . .
-                    .`}
-                    </ArticleDescription>
-                  </ArticleCardContainer>
-                </ArticleCard>
-              </Link>
-            ))
-          : null}
-      </ArticleCardsContainer>
+      <div
+        className={c.content}
+        dangerouslySetInnerHTML={{ __html: article?.content }}
+      ></div>
     </ArticlesContainer>
   );
 };
