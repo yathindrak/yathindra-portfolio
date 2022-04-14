@@ -6,37 +6,13 @@ import Row from "../common/row";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const PortfolioContainer = styled(Container)`
+const ArticlesContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   margin-top: 10rem;
 `;
 
-const PortfolioMenuContainer = styled(Row)`
-  justify-content: flex-end;
-  width: 100%;
-  margin-bottom: 3rem;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-interface PortfolioMenuItemProps {
-  readonly selected: boolean;
-}
-
-const PortfolioMenuItem = styled(Box)<PortfolioMenuItemProps>`
-  margin-left: 4rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: ${(props) => (props.selected ? "purple" : "#000")};
-  &:hover {
-    color: purple;
-    transition: all 0.3s;
-  }
-`;
-
-const PortfolioMobileTitle = styled(Box)`
+const ArticlesMobileTitle = styled(Box)`
   align-self: center;
   font-size: 1.4rem;
   font-weight: 500;
@@ -46,18 +22,18 @@ const PortfolioMobileTitle = styled(Box)`
   }
 `;
 
-interface ArticlesContainerProps {
+interface ArticleCardsContainerProps {
   // space evenly when only two cards are available
   readonly shouldSpaceEvenly: boolean;
 }
 
-const ArticlesContainer = styled(Row)<ArticlesContainerProps>`
+const ArticleCardsContainer = styled(Row)<ArticleCardsContainerProps>`
   justify-content: ${(props) =>
     props.shouldSpaceEvenly ? "space-evenly" : "space-between"};
   flex-wrap: wrap;
 `;
 
-const PortfolioCardContent = styled(Row)`
+const ArticleCardContainer = styled(Row)`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -66,12 +42,14 @@ const PortfolioCardContent = styled(Row)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: flex;
+  justify-content: flex-start;
 `;
 
-const PortfolioCardContainer = styled(Row)`
+const ArticleCard = styled(Row)`
   position: relative;
   cursor: pointer;
-  height: 26rem;
+  height: 25rem;
   width: 24rem;
   margin-bottom: 2.5rem;
   box-shadow: 0 2px 0 rgb(90 97 105 / 11%), 0 4px 8px rgb(90 97 105 / 12%),
@@ -121,34 +99,33 @@ export const Articles: React.FC<IArticlesProps> = ({ articles }) => {
   };
 
   return (
-    <PortfolioContainer id="portfolio">
-      <PortfolioMobileTitle>My Articles</PortfolioMobileTitle>
+    <ArticlesContainer>
+      <ArticlesMobileTitle>My Articles</ArticlesMobileTitle>
 
-      <ArticlesContainer shouldSpaceEvenly={true}>
+      <ArticleCardsContainer shouldSpaceEvenly={true}>
         {filteredData
           ? filteredData.map((item, i) => (
               /*         <Link href={item?.url} passHref key={i}> */
-              <PortfolioCardContainer key={i}>
-                <PortfolioCardContent>
-                  <img style={{ width: "100%" }} src={item?.thumbnail} />
-                  {/* <Image
-                    src="https://cdn-images-1.medium.com/max/707/1*tD_k4VbQDq7HYb27EXK6FA.png"
-                    layout="fill"
-                    width={200}
-                    objectFit="contain"
-                    // placeholder="blur"
-                    alt="Picture of the author"
-                  /> */}
+              <ArticleCard key={i}>
+                <ArticleCardContainer>
+                  <img
+                    style={{ width: "100%" }}
+                    src={item?.thumbnail}
+                    alt={item?.title}
+                  />
                   <ArticleHeading>{item?.title}</ArticleHeading>
                   <ArticleDescription>
-                    {convertNodeToText(item.description.substring(0, 280))} . . .
+                    {`${convertNodeToText(
+                      item.description.substring(0, 280)
+                    )} . .
+                    .`}
                   </ArticleDescription>
-                </PortfolioCardContent>
-              </PortfolioCardContainer>
+                </ArticleCardContainer>
+              </ArticleCard>
               /* </Link> */
             ))
           : null}
-      </ArticlesContainer>
-    </PortfolioContainer>
+      </ArticleCardsContainer>
+    </ArticlesContainer>
   );
 };
