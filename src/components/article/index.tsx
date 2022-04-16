@@ -5,10 +5,11 @@ import Container from "../common/container";
 import Row from "../common/row";
 import c from "./index.module.css";
 
-const ArticlesContainer = styled(Container)`
+const ArticleContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   max-width: 68vw;
+  min-height: 100vh;
 `;
 
 const ArticlesMobileTitle = styled(Box)`
@@ -94,13 +95,13 @@ export const Article: React.FC<IArticleProps> = ({ article }) => {
   console.log(article);
 
   return (
-    <ArticlesContainer>
+    <ArticleContainer>
       <ArticlesMobileTitle>My Articles</ArticlesMobileTitle>
 
       <div
         className={c.content}
         dangerouslySetInnerHTML={{ __html: article?.content }}
       ></div>
-    </ArticlesContainer>
+    </ArticleContainer>
   );
 };
