@@ -10,6 +10,7 @@ const ArticlesContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   margin-top: 10rem;
+  min-height: 58vh;
 `;
 
 const ArticlesMobileTitle = styled(Box)`
