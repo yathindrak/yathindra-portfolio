@@ -5,6 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import React from "react";
 
 interface NavContainerProps {
   readonly isScrolledDown: boolean;
@@ -161,3 +162,5 @@ export const NavBar: React.FC = () => {
     </>
   );
 };
+
+export default React.memo(NavBar);

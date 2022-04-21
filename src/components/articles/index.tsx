@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styled from "styled-components";
 import Box from "../common/box";
 import Container from "../common/container";

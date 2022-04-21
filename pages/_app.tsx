@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import ThemeProvider from "../src/context/themeContext";
-import { NavBar } from "../src/components/header";
 import ContentfulProvider, {
   IContentfulConfig,
 } from "../src/context/contentfulContext";
 import { Router } from "next/router";
+import NavBar from "../src/components/header";
 
 //Binding route events with nprogress. 
 Router.events.on('routeChangeStart', () => NProgress.start()); 
