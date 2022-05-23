@@ -31,6 +31,10 @@
 .content pre {
     background-color: rgba(242, 242, 242, 1);
     padding: 1rem;
+    background-image: linear-gradient( 167deg, #5e0074 0%, #232771 100% );
+    color: white;
+    font-size: 0.9rem;
+    font-family: monaco, Consolas, "Lucida Console", monospace;
 }
 
 .content li {
