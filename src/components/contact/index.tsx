@@ -54,6 +54,14 @@ export const NameEmailContainer = styled(Row)`
   }
 `;
 
+const ContactContainer = styled(Row)`
+  flex-direction: column;
+  position: relative;
+  background: #ffff;
+  width: 100%;
+  padding-bottom: 3rem;
+`;
+
 export const ContactSection: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -80,7 +88,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <Container id="contact" style={{ flexDirection: "column" }}>
+    <ContactContainer id="contact">
       <ContactTitleText>Let&rsquo;s talk</ContactTitleText>
       <ContactSubTitleText>
         Good conversations leads to innovations
@@ -151,6 +159,6 @@ export const ContactSection: React.FC = () => {
           </PrimaryButtonNotAllowed>
         )}
       </FormContainer>
-    </Container>
+    </ContactContainer>
   );
 };

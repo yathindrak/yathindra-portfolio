@@ -11,12 +11,15 @@ import Link from "next/link";
 const PortfolioContainer = styled(Container)`
   display: flex;
   flex-direction: column;
+  position: relative;
+  background: #ffff;
+  width: 100%;
+  padding-top: 4rem;
 `;
 
 const PortfolioMenuContainer = styled(Row)`
   justify-content: flex-end;
   width: 100%;
-  margin-bottom: 3rem;
   @media screen and (max-width: 768px) {
     display: none;
   }

@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { GrClose, GrGithub, GrLinkedin, GrMedium } from "react-icons/gr";
+import Particles from "react-tsparticles";
 import styled from "styled-components";
 import Box from "../common/box";
 import Container from "../common/container";
 import Row from "../common/row";
+import particlesOptions from "../../config/particles";
+import { loadFull } from "tsparticles";
 
 const HeroImageSection = styled(Row)`
   background-image: url("profile-photo.png");
@@ -91,6 +94,11 @@ interface NavBarProps {
   subtitleText: string;
 }
 
+// @ts-ignore
+const handelinit = async (main) => {
+  await loadFull(main);
+};
+
 export const HeroSection: React.FC<NavBarProps> = ({
   mainTitleText,
   mainTitleSubText,
@@ -98,6 +106,7 @@ export const HeroSection: React.FC<NavBarProps> = ({
 }) => {
   return (
     <Container>
+      <Particles options={particlesOptions} init={handelinit} />
       <HeroDescriptionSection>
         <HeroDescriptionTitleContainer>
           <HeroDescriptionTitleText>{mainTitleText}</HeroDescriptionTitleText>

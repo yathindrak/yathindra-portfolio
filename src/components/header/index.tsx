@@ -38,7 +38,7 @@ const MenuItem = styled(Row)`
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   padding: 1rem;
-  font-weight: 400;
+  font-weight: 700;
   &:hover {
     color: purple;
     transition: all 0.3s;
