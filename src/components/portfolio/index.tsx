@@ -15,6 +15,7 @@ const PortfolioContainer = styled(Container)`
   background: #ffff;
   width: 100%;
   padding-top: 4rem;
+  padding-right: 4rem;
 `;
 
 const PortfolioMenuContainer = styled(Row)`

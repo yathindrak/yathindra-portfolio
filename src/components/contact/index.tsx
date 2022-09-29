@@ -60,6 +60,7 @@ const ContactContainer = styled(Row)`
   background: #ffff;
   width: 100%;
   padding-bottom: 3rem;
+  padding-right: 4rem;
 `;
 
 export const ContactSection: React.FC = () => {
