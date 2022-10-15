@@ -16,6 +16,10 @@ const PortfolioContainer = styled(Container)`
   width: 100%;
   padding-top: 4rem;
   padding-right: 4rem;
+  @media screen and (max-width: 768px) {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
 `;
 
 const PortfolioMenuContainer = styled(Row)`

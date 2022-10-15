@@ -61,6 +61,10 @@ const ContactContainer = styled(Row)`
   width: 100%;
   padding-bottom: 3rem;
   padding-right: 4rem;
+  @media screen and (max-width: 768px) {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
 `;
 
 export const ContactSection: React.FC = () => {

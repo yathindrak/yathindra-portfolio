@@ -11,6 +11,10 @@ interface NavContainerProps {
   readonly isScrolledDown: boolean;
 }
 
+interface MobileNavContainerProps {
+  readonly isMobileNavOpen: boolean;
+}
+
 const NavContainer = styled(Row)<NavContainerProps>`
   justify-content: center;
   position: fixed;
@@ -51,20 +55,26 @@ const MobileNavTriggerContainer = styled(Row)`
   justify-content: right;
 `;
 
-const MobileNavContainer = styled(Box)`
+const MobileNavContainer = styled(Box)<MobileNavContainerProps>`
   display: flex;
   flex-direction: column;
-  width: 95%;
-  margin: 0 auto;
   @media screen and (min-width: 768px) {
     display: none;
   }
+  ${(props) => (props.isMobileNavOpen ? "box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);" : "")};
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #ffffff !important;
+  z-index: 1000;
+  position: relative;
 `;
 
 const MobileNavTriggerItem = styled(Box)`
   display: block;
   height: 3rem;
   cursor: pointer;
+  margin-right: 1rem;
 `;
 
 const MobileNavDropdownContainer = styled(Box)`
@@ -135,7 +145,7 @@ export const NavBar: React.FC = () => {
         </Menu>
       </NavContainer>
 
-      <MobileNavContainer>
+      <MobileNavContainer isMobileNavOpen={isMobileNavOpen}>
         <MobileNavTriggerContainer>
           <MobileNavTrigger
             isMobileNavOpen={isMobileNavOpen}
