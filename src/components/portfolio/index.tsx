@@ -64,6 +64,7 @@ const PortfolioCardsContainer = styled(Row)<PortfolioCardsContainerProps>`
   justify-content: ${(props) =>
     props.shouldSpaceEvenly ? "space-evenly" : "space-between"};
   flex-wrap: wrap;
+  margin-top: 2rem;
 `;
 
 const PortfolioCardOverlayContainer = styled(Row)`
@@ -77,6 +78,7 @@ const PortfolioCardOverlayContainer = styled(Row)`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
+  text-align: center;
 `;
 
 const PortfolioCardContainer = styled(Row)`
@@ -140,7 +142,7 @@ export const Portfolio: React.FC = ({}) => {
       setFilteredData(selectedData);
     }
   }, [selectedTab]);
-
+console.log({filteredData});
   return (
     <PortfolioContainer id="portfolio">
       <PortfolioMenuContainer>
